@@ -1,0 +1,3490 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    133610,       3482]
+NotebookOptionsPosition[    127868,       3378]
+NotebookOutlinePosition[    128208,       3393]
+CellTagsIndexPosition[    128165,       3390]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Integration Visualization and Computation", "Chapter",
+ CellChangeTimes->{{3.750695483288892*^9, 
+  3.75069549367278*^9}},ExpressionUUID->"934fee6b-8048-4380-8a62-\
+c6dad9c1a004"],
+
+Cell["\<\
+This notebook will plot a region in 2D or 3D described from the bounds of an \
+integral. In addition, you can use the Integrate[] command to compute any \
+integrals to get exact and approximate answers. \
+\>", "Text",
+ CellChangeTimes->{{3.750695500776738*^9, 
+  3.750695592073134*^9}},ExpressionUUID->"6ee01bdb-ab38-4a85-a021-\
+beee7c58dc56"],
+
+Cell[CellGroupData[{
+
+Cell["Double Integrals in Cartesian (Rectangular) Coordinates", "Section",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750691638992403*^9, 
+  3.750691672960208*^9}},ExpressionUUID->"c07cd9f5-f085-4764-9e90-\
+f8279a9307bf"],
+
+Cell[CellGroupData[{
+
+Cell["Plot", "Subsection",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.7506951318969593`*^9, 
+  3.750695149624834*^9}},ExpressionUUID->"e16f74cb-f89d-4def-a413-\
+66c2a049a5ea"],
+
+Cell["\<\
+The following code will construct a region plot in 2D of a region described \
+by the bounds of a double integral using Cartesian coordinates.  Just supply \
+the OuterBounds and InnerBounds. We use the ParametricPlot command (with two \
+parameters) to do the graphing. The coordinate system is just (x,y)=(x,y) for \
+Cartesian Coordinates. \
+\>", "Text",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750691353264286*^9, 3.7506914614726143`*^9}, {
+  3.75069225880387*^9, 3.7506922953461657`*^9}, {3.7506929193226233`*^9, 
+  3.7506929801868877`*^9}},ExpressionUUID->"6500ce00-14a0-4a5f-84cd-\
+a59bf2c09a20"],
+
+Cell[BoxData[{
+ RowBox[{"OuterBounds", "=", 
+  RowBox[{"{", 
+   RowBox[{"x", ",", "0", ",", "3"}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"InnerBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"y", ",", 
+     RowBox[{"-", "x"}], ",", 
+     RowBox[{"x", "^", "2"}]}], "}"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"CoordinateSystem", "=", 
+  RowBox[{"{", 
+   RowBox[{"x", ",", "y"}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"ParametricPlot", "[", 
+  RowBox[{
+   RowBox[{"Evaluate", "[", "CoordinateSystem", "]"}], ",", 
+   RowBox[{"Evaluate", "[", "OuterBounds", "]"}], ",", 
+   RowBox[{"Evaluate", "[", "InnerBounds", "]"}], ",", 
+   RowBox[{"Mesh", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"10", ",", "0"}], "}"}]}]}], "]"}]}], "Input",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750690923824171*^9, 3.750690925426818*^9}, {
+  3.750690968591851*^9, 3.7506912149153337`*^9}, {3.750691272978971*^9, 
+  3.750691278482147*^9}, {3.750691471156376*^9, 3.750691552673985*^9}, {
+  3.750692115556038*^9, 3.75069212449914*^9}, {3.750692159123789*^9, 
+  3.750692255171254*^9}, {3.750692778202074*^9, 3.7506927901865997`*^9}, {
+  3.7506956899658546`*^9, 3.750695716181525*^9}, {3.750695764765942*^9, 
+  3.750695771817917*^9}},ExpressionUUID->"6e859740-a85a-4b45-8f61-\
+9c42b4786301"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Compute Integral", "Subsection",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.7506951554968853`*^9, 
+  3.750695188568738*^9}},ExpressionUUID->"38399241-d499-42f0-954d-\
+1e353acf056c"],
+
+Cell["\<\
+The following code will compute a double integral. If the integrand is 1 \
+using x and y bounds, then you will compute the area of the region.\
+\>", "Text",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750691561488798*^9, 
+  3.7506916126405897`*^9}},ExpressionUUID->"70f9a5af-2cb3-4ff8-a431-\
+2a26a6b5a99d"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"OuterBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "0", ",", "3"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"InnerBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"y", ",", 
+     RowBox[{"-", "x"}], ",", 
+     RowBox[{"x", "^", "2"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Integrand", "=", "1"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"IntegralSolution", " ", "=", 
+   RowBox[{"Integrate", "[", 
+    RowBox[{"Integrand", ",", "OuterBounds", ",", " ", "InnerBounds"}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ApproximateSolution", " ", "=", 
+   RowBox[{"NIntegrate", "[", 
+    RowBox[{"Integrand", ",", "OuterBounds", ",", " ", "InnerBounds"}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Grid", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<OuterBounds\>\"", ",", " ", "\"\<InnerBounds\>\"", ",", 
+       "\"\<Integrand\>\"", ",", " ", "\"\<Integral Solution\>\"", ",", 
+       "\"\<ApproximateSolution\>\""}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "OuterBounds", ",", " ", "InnerBounds", ",", "Integrand", ",", 
+       "IntegralSolution", ",", "ApproximateSolution"}], "}"}]}], "}"}], ",", 
+   
+   RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}]}], "Input",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750691223173471*^9, 3.7506912670403347`*^9}, {
+   3.750691297248672*^9, 3.750691338896779*^9}, {3.7506927320316267`*^9, 
+   3.750692767578857*^9}, 3.750692804850916*^9, {3.750693828318136*^9, 
+   3.750693861210767*^9}, {3.750695194796047*^9, 
+   3.750695195802154*^9}},ExpressionUUID->"0cd31711-11fd-4faa-a595-\
+03df26a1f794"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Bounds Animation", "Subsection",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.7506951554968853`*^9, 3.750695188568738*^9}, {
+  3.815731955447661*^9, 
+  3.815731961351335*^9}},ExpressionUUID->"c36bae79-7efe-41df-b102-\
+24d073cd2e13"],
+
+Cell["\<\
+This block of code helps you visualize setting up bounds in terms of \
+\"Smashing\" or \"Constructing.\" The lines drawn in each diagram represent \
+the lines related to the inner variable of integration.  You have to smash \
+the inner variable of integration out of a problem before you can smash the \
+outer variable of integration out. \
+\>", "Text",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.4459135753939314`*^9, 
+  3.44591367355508*^9}},ExpressionUUID->"4685eccd-0112-4cfd-a3f1-\
+304d6f29009a"],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", 
+  RowBox[{"x", ",", "y"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"OuterBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", 
+     RowBox[{"-", "3"}], ",", "3"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"InnerBounds", "=", 
+    RowBox[{"{", 
+     RowBox[{"y", ",", "0", ",", 
+      RowBox[{"x", "^", "2"}]}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rT", "=", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"DT", "=", 
+   RowBox[{"D", "[", 
+    RowBox[{"rT", ",", 
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"OuterBounds", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", 
+        RowBox[{"InnerBounds", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], "}"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Jacob", "=", 
+    RowBox[{"Abs", "[", 
+     RowBox[{"Det", "[", "DT", "]"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"rr", "=", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"x", ",", "y"}], "}"}], "/.", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"x", "\[Rule]", 
+         RowBox[{"Coordinates", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+        RowBox[{"y", "\[Rule]", 
+         RowBox[{"Coordinates", "[", 
+          RowBox[{"[", "2", "]"}], "]"}]}]}], "}"}]}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"rs", "=", 
+     RowBox[{"rr", "/.", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"OB", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"OB", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], 
+            RowBox[{"(", 
+             RowBox[{"1", "-", "OBSmash"}], ")"}]}], "+", 
+           RowBox[{"OBSmash", " ", "SmashOBTo"}]}], ")"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"IB", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"IB", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], 
+            RowBox[{"(", 
+             RowBox[{"1", "-", "IBSmash"}], ")"}]}], "+", 
+           RowBox[{"IBSmash", " ", "SmashIBTo"}]}], ")"}]}]}], "}"}]}]}], ";",
+     "\[IndentingNewLine]", 
+    RowBox[{"wIB", "=", "IB"}], ";", 
+    RowBox[{"wOB", "=", "OB"}], ";", 
+    RowBox[{"wMB", "=", "MB"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", 
+     RowBox[{"{", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"ParametricPlot", "[", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"rr", "/.", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"wIB", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"wIB", "[", 
+                  RowBox[{"[", "2", "]"}], "]"}], 
+                 RowBox[{"(", 
+                  RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                RowBox[{
+                 RowBox[{"wIB", "[", 
+                  RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}], 
+           ")"}], ",", 
+          RowBox[{"Evaluate", "[", "wOB", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"MeshShading", "\[Rule]", "None"}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"21", ",", "0"}], "}"}]}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", "None"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], ",", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"ParametricPlot", "[", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"rs", "/.", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"wIB", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"wIB", "[", 
+                  RowBox[{"[", "2", "]"}], "]"}], 
+                 RowBox[{"(", 
+                  RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                RowBox[{
+                 RowBox[{"wIB", "[", 
+                  RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}], 
+           ")"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"Evaluate", "[", "wOB", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", "Blue"}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"21", ",", "0"}], "}"}]}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]}], 
+       "\[IndentingNewLine]", "}"}], "}"}], "]"}]}], "\[IndentingNewLine]", 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"Coordinates", ",", "rT"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"OB", ",", "OuterBounds"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"IB", ",", "InnerBounds"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"SmashIBTo", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"IBSmash", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"SmashOBTo", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"OBSmash", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"ControlPlacement", "\[Rule]", "Left"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Grid", "[", 
+  RowBox[{
+   RowBox[{"(", "\[NoBreak]", GridBox[{
+      {"\"\<Transformation\>\"", "rT"},
+      {"\"\<Derivative\>\"", 
+       RowBox[{"DT", "//", "MatrixForm"}]},
+      {"\"\<Jacobian\>\"", 
+       RowBox[{"Jacob", "//", "Simplify"}]}
+     },
+     GridBoxDividers->{
+      "Columns" -> {{True}}, "ColumnsIndexed" -> {}, "Rows" -> {{True}}, 
+       "RowsIndexed" -> {}}], "\[NoBreak]", ")"}], ",", 
+   RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "[", 
+  RowBox[{"OuterBounds", ",", "InnerBounds", ",", "rT"}], "]"}]}], "Input",
+ ShowGroupOpener->True,
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQBWIQrXL+a33vmpeOB2oT2kB0ityjCSDaz01wEoiuE1g9
+A8zf/HUeiHbiO7AIRD/bXrYYRC/zl5LvA9JFK1YbgOhpr21DQXReZmIUiO60
+0ygC0W1XfjeC6JIFnJ0gOubilokgesmyh9NB9HveNXNANOdl35UgekFX9Qmw
+/InUayA6Q4j9JojOurH7OYiW00p6AaK3Hwu13gqkRXddsQHRVhVmgSB6mYdV
+OIjecWp1PFhe83MhiDafbdECojeY97WCaBXfe90gupuvqQdEV9Ue9j8CpCcY
+s4aDaFbF254x6146+od99AbR/N8yv4LoFwu2gOm5gq4usUB6JkcDmAYACyS4
+qg==
+  "],ExpressionUUID->"9d6bd514-7112-44fe-9710-23fd72d4bd54"]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Double Integrals in Polar Coordinates", "Section",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750691638992403*^9, 
+  3.7506916882087803`*^9}},ExpressionUUID->"fa42b6fd-f983-4f8b-bc21-\
+7fb0f38ddce1"],
+
+Cell[CellGroupData[{
+
+Cell["Plot", "Subsection",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.7506951318969593`*^9, 
+  3.750695149624834*^9}},ExpressionUUID->"554511a5-9a31-4adb-81b5-\
+b51bdbd10a48"],
+
+Cell["\<\
+The following code will draw a regions described using polar coordinates. \
+\>", "Text",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750691353264286*^9, 3.7506914614726143`*^9}, {
+   3.750692326196982*^9, 3.750692334741083*^9}, 
+   3.750695228328363*^9},ExpressionUUID->"710f7bf6-f101-4b00-b18f-\
+3b4b84bbe023"],
+
+Cell[BoxData[{
+ RowBox[{"OuterBounds", "=", 
+  RowBox[{"{", 
+   RowBox[{"theta", ",", 
+    RowBox[{"Pi", "/", "4"}], ",", "Pi"}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"InnerBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"r", ",", "2", ",", "5"}], "}"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"CoordinateSystem", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"r", " ", 
+      RowBox[{"Cos", "[", "theta", "]"}]}], ",", 
+     RowBox[{"r", " ", 
+      RowBox[{"Sin", "[", "theta", "]"}]}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ParametricPlot", "[", 
+  RowBox[{
+   RowBox[{"Evaluate", "[", "CoordinateSystem", "]"}], ",", 
+   RowBox[{"Evaluate", "[", "OuterBounds", "]"}], ",", 
+   RowBox[{"Evaluate", "[", "InnerBounds", "]"}], ",", 
+   RowBox[{"Mesh", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"10", ",", "0"}], "}"}]}]}], "]"}]}], "Input",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750690923824171*^9, 3.750690925426818*^9}, {
+   3.750690968591851*^9, 3.7506912149153337`*^9}, {3.750691272978971*^9, 
+   3.750691278482147*^9}, {3.750691471156376*^9, 3.750691552673985*^9}, {
+   3.750691694595461*^9, 3.7506917128499317`*^9}, {3.750692338885743*^9, 
+   3.750692385710988*^9}, {3.750692813643342*^9, 3.750692839609606*^9}, 
+   3.750694995485396*^9, {3.750695724169917*^9, 3.750695728633338*^9}, 
+   3.750695782244482*^9, {3.750695864443809*^9, 
+   3.750695865434827*^9}},ExpressionUUID->"f3d623dd-a399-43e5-b554-\
+7faba251c33f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Compute Integral", "Subsection",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.7506951554968853`*^9, 
+  3.750695188568738*^9}},ExpressionUUID->"e670ab7e-7d85-4c6e-b2e1-\
+9d93a083e6cc"],
+
+Cell["\<\
+The following code will compute a double integral. If the integrand is r (the \
+Jacobian) using r and \[Theta] bounds, then you will compute the area of the \
+region. A plot of the region is also provided. \
+\>", "Text",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750691561488798*^9, 3.7506916126405897`*^9}, {
+  3.750692592777494*^9, 3.750692603784903*^9}, {3.750692874681629*^9, 
+  3.75069289901816*^9}},ExpressionUUID->"972e656c-bd63-413f-a9d2-\
+4ce2dc95dc75"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"OuterBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"theta", ",", 
+     RowBox[{"Pi", "/", "4"}], ",", "Pi"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"InnerBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"r", ",", "2", ",", "5"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+
+ RowBox[{
+  RowBox[{
+   RowBox[{"Integrand", "=", 
+    RowBox[{"Abs", "[", "r", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"IntegralSolution", " ", "=", 
+   RowBox[{"Integrate", "[", 
+    RowBox[{"Integrand", ",", "OuterBounds", ",", " ", "InnerBounds"}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ApproximateSolution", " ", "=", 
+   RowBox[{"NIntegrate", "[", 
+    RowBox[{"Integrand", ",", "OuterBounds", ",", " ", "InnerBounds"}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Grid", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<OuterBounds\>\"", ",", " ", "\"\<InnerBounds\>\"", ",", 
+       "\"\<Integrand\>\"", ",", " ", "\"\<Integral Solution\>\"", ",", 
+       "\"\<ApproximateSolution\>\""}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "OuterBounds", ",", " ", "InnerBounds", ",", "Integrand", ",", 
+       "IntegralSolution", ",", "ApproximateSolution"}], "}"}]}], "}"}], ",", 
+   
+   RowBox[{"Frame", "\[Rule]", "All"}]}], 
+  "]"}], "\[IndentingNewLine]"}], "Input",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750691223173471*^9, 3.7506912670403347`*^9}, {
+   3.750691297248672*^9, 3.750691338896779*^9}, {3.750692422921371*^9, 
+   3.750692578957871*^9}, {3.750692622682971*^9, 3.750692711627256*^9}, {
+   3.750692849838499*^9, 3.75069285035215*^9}, 3.75069387353859*^9, {
+   3.750694204621586*^9, 3.750694212666357*^9}, {3.7506949727362947`*^9, 
+   3.750694985213191*^9}, {3.750695349963578*^9, 
+   3.750695350506475*^9}},ExpressionUUID->"030b63c6-b769-4ba4-8903-\
+6729a8e8f8f5"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Bounds Animation", "Subsection",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.7506951554968853`*^9, 3.750695188568738*^9}, {
+  3.815731955447661*^9, 
+  3.815731961351335*^9}},ExpressionUUID->"c2321da1-274a-44f8-a075-\
+1ef01300402c"],
+
+Cell["\<\
+This block of code helps with visualizing polar coordinate smashing.  Notice \
+that smashing r to 0 means you would smash the entire graph to a point. \
+Instead, pick a nonzero radius and smash the entire graph to that radius \
+(kind of like inserting a balloon at the origin, while compressing from the \
+exterior).  If you can place the theta bound as the inner variable, then \
+viewing the region is similar to folding up (or unfolding) a fan.\
+\>", "Text",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.4459136825980835`*^9, 
+  3.445913824071512*^9}},ExpressionUUID->"92e2e7e6-35e8-4819-9ddc-\
+b268939cd503"],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", 
+  RowBox[{"r", ",", "theta"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"OuterBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"theta", ",", "0", ",", 
+     RowBox[{"2", "Pi"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"InnerBounds", "=", 
+    RowBox[{"{", 
+     RowBox[{"r", ",", "0", ",", 
+      RowBox[{"1", "-", 
+       RowBox[{"Cos", "[", "theta", "]"}]}]}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"rT", "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"r", " ", 
+       RowBox[{"Cos", "[", "theta", "]"}]}], ",", 
+      RowBox[{"r", " ", 
+       RowBox[{"Sin", "[", "theta", "]"}]}]}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"DT", "=", 
+   RowBox[{"D", "[", 
+    RowBox[{"rT", ",", 
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"OuterBounds", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", 
+        RowBox[{"InnerBounds", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], "}"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Jacob", "=", 
+    RowBox[{"Abs", "[", 
+     RowBox[{"Det", "[", "DT", "]"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"rr", "=", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"x", ",", "y"}], "}"}], "/.", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"x", "\[Rule]", 
+         RowBox[{"Coordinates", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+        RowBox[{"y", "\[Rule]", 
+         RowBox[{"Coordinates", "[", 
+          RowBox[{"[", "2", "]"}], "]"}]}]}], "}"}]}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"rs", "=", 
+     RowBox[{"rr", "/.", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"OB", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"OB", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], 
+            RowBox[{"(", 
+             RowBox[{"1", "-", "OBSmash"}], ")"}]}], "+", 
+           RowBox[{"OBSmash", " ", "SmashOBTo"}]}], ")"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"IB", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"IB", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], 
+            RowBox[{"(", 
+             RowBox[{"1", "-", "IBSmash"}], ")"}]}], "+", 
+           RowBox[{"IBSmash", " ", "SmashIBTo"}]}], ")"}]}]}], "}"}]}]}], ";",
+     "\[IndentingNewLine]", 
+    RowBox[{"wIB", "=", "IB"}], ";", 
+    RowBox[{"wOB", "=", "OB"}], ";", 
+    RowBox[{"wMB", "=", "MB"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", 
+     RowBox[{"{", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"ParametricPlot", "[", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"rr", "/.", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"wIB", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"wIB", "[", 
+                  RowBox[{"[", "2", "]"}], "]"}], 
+                 RowBox[{"(", 
+                  RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                RowBox[{
+                 RowBox[{"wIB", "[", 
+                  RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}], 
+           ")"}], ",", 
+          RowBox[{"Evaluate", "[", "wOB", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"MeshShading", "\[Rule]", "None"}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"21", ",", "0"}], "}"}]}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", "None"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], ",", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"ParametricPlot", "[", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"rs", "/.", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"wIB", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"wIB", "[", 
+                  RowBox[{"[", "2", "]"}], "]"}], 
+                 RowBox[{"(", 
+                  RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                RowBox[{
+                 RowBox[{"wIB", "[", 
+                  RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}], 
+           ")"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"Evaluate", "[", "wOB", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", "Blue"}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"21", ",", "0"}], "}"}]}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]}], 
+       "\[IndentingNewLine]", "}"}], "}"}], "]"}]}], "\[IndentingNewLine]", 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"Coordinates", ",", "rT"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"OB", ",", "OuterBounds"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"IB", ",", "InnerBounds"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"SmashIBTo", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"IBSmash", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"SmashOBTo", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"OBSmash", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"ControlPlacement", "\[Rule]", "Left"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Grid", "[", 
+  RowBox[{
+   RowBox[{"(", "\[NoBreak]", GridBox[{
+      {"\"\<Transformation\>\"", "rT"},
+      {"\"\<Derivative\>\"", 
+       RowBox[{"DT", "//", "MatrixForm"}]},
+      {"\"\<Jacobian\>\"", 
+       RowBox[{"Jacob", "//", "Simplify"}]}
+     },
+     GridBoxDividers->{
+      "Columns" -> {{True}}, "ColumnsIndexed" -> {}, "Rows" -> {{True}}, 
+       "RowsIndexed" -> {}}], "\[NoBreak]", ")"}], ",", 
+   RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "[", 
+  RowBox[{"OuterBounds", ",", "InnerBounds", ",", "rT"}], "]"}]}], "Input",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.445911007171008*^9, 3.44591103375924*^9}, {
+   3.445911118260747*^9, 3.4459111227872562`*^9}, {3.4459111531809597`*^9, 
+   3.44591115718672*^9}, {3.4459112061471214`*^9, 3.4459112445223026`*^9}, {
+   3.445911357654979*^9, 3.4459115446839137`*^9}, {3.445911582718605*^9, 
+   3.4459115925126877`*^9}, 3.4459116603402195`*^9, {3.445911821632146*^9, 
+   3.445911827100008*^9}, 3.445912021199109*^9, {3.445912072352664*^9, 
+   3.4459122039518943`*^9}, {3.4459131865447936`*^9, 
+   3.4459131947566013`*^9}, {3.4459133313730464`*^9, 
+   3.4459133532645245`*^9}, {3.445913386772707*^9, 3.445913388475155*^9}, {
+   3.446820492230485*^9, 3.446820584968459*^9}, {3.446858036201355*^9, 
+   3.4468580422901106`*^9}, {3.4468582342962017`*^9, 
+   3.446858236228981*^9}},ExpressionUUID->"7d0739ae-9fdf-4419-9997-\
+52508a128112"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Triple Integrals in Cartesian Coordinates", "Section",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750691638992403*^9, 3.7506916882087803`*^9}, {
+  3.7506930052250834`*^9, 
+  3.750693010041381*^9}},ExpressionUUID->"1f5231b2-8c89-433a-bdee-\
+ce31f29cef07"],
+
+Cell[CellGroupData[{
+
+Cell["Plot", "Subsection",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.7506951318969593`*^9, 
+  3.750695149624834*^9}},ExpressionUUID->"1b5bb44b-6e5c-4767-8854-\
+aacf07ce737c"],
+
+Cell["\<\
+The following code will draw a solid region described using triple integrals \
+in Cartesian coordinates.  The code actually draws 6 surfaces (one for each \
+inequality) and then puts them in the same plot. \
+\>", "Text",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750691353264286*^9, 3.7506914614726143`*^9}, {
+  3.750692326196982*^9, 3.750692334741083*^9}, {3.750693024489408*^9, 
+  3.7506930478493013`*^9}, {3.750693194681807*^9, 3.750693214601144*^9}, {
+  3.7506935685537148`*^9, 3.7506935782967567`*^9}, {3.7506939430171947`*^9, 
+  3.750693969193694*^9}},ExpressionUUID->"a5b63c31-5f00-46fb-932e-\
+06c19a1d2692"],
+
+Cell[BoxData[{
+ RowBox[{"OuterBounds", "=", 
+  RowBox[{"{", 
+   RowBox[{"x", ",", 
+    RowBox[{"-", "2"}], ",", "2"}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MiddleBounds", "=", 
+  RowBox[{"{", 
+   RowBox[{"y", ",", "0", ",", "4"}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"InnerBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"z", ",", "0", ",", 
+     RowBox[{"x", "^", "2"}]}], "}"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"CoordinateSystem", "=", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Show", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"ParametricPlot3D", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Evaluate", "[", "CoordinateSystem", "]"}], "/.", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"InnerBounds", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+             RowBox[{"InnerBounds", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+          RowBox[{
+           RowBox[{"Evaluate", "[", "CoordinateSystem", "]"}], "/.", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"InnerBounds", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+             RowBox[{"InnerBounds", "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}], "}"}], ",", 
+        RowBox[{"Evaluate", "[", "OuterBounds", "]"}], ",", 
+        RowBox[{"Evaluate", "[", "MiddleBounds", "]"}], ",", 
+        RowBox[{"AxesLabel", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], ",", 
+        RowBox[{"Mesh", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"15", ",", "1"}], "}"}]}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ParametricPlot3D", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Evaluate", "[", "CoordinateSystem", "]"}], "/.", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"InnerBounds", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"InnerBounds", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], 
+                RowBox[{"(", 
+                 RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+               RowBox[{
+                RowBox[{"InnerBounds", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}], 
+          ")"}], "/.", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"MiddleBounds", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+           RowBox[{"MiddleBounds", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+        RowBox[{"Evaluate", "[", "OuterBounds", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Red"}], ",", 
+        RowBox[{"Mesh", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"15", ",", "0"}], "}"}]}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ParametricPlot3D", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Evaluate", "[", "CoordinateSystem", "]"}], "/.", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"InnerBounds", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"InnerBounds", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], 
+                RowBox[{"(", 
+                 RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+               RowBox[{
+                RowBox[{"InnerBounds", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}], 
+          ")"}], "/.", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"MiddleBounds", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+           RowBox[{"MiddleBounds", "[", 
+            RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}], ",", 
+        RowBox[{"Evaluate", "[", "OuterBounds", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Blue"}], ",", 
+        RowBox[{"Mesh", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"15", ",", "0"}], "}"}]}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ParametricPlot3D", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Evaluate", "[", "CoordinateSystem", "]"}], "/.", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"InnerBounds", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"InnerBounds", "[", 
+                  RowBox[{"[", "2", "]"}], "]"}], 
+                 RowBox[{"(", 
+                  RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                RowBox[{
+                 RowBox[{"InnerBounds", "[", 
+                  RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}], 
+           ")"}], "/.", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"MiddleBounds", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"MiddleBounds", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], 
+               RowBox[{"(", 
+                RowBox[{"1", "-", "t"}], ")"}]}], "+", 
+              RowBox[{
+               RowBox[{"MiddleBounds", "[", 
+                RowBox[{"[", "3", "]"}], "]"}], "t"}]}], ")"}]}], ")"}]}], "/.", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"OuterBounds", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+           RowBox[{"OuterBounds", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Green"}], ",", 
+        RowBox[{"Mesh", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}]}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ParametricPlot3D", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Evaluate", "[", "CoordinateSystem", "]"}], "/.", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"InnerBounds", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"InnerBounds", "[", 
+                  RowBox[{"[", "2", "]"}], "]"}], 
+                 RowBox[{"(", 
+                  RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                RowBox[{
+                 RowBox[{"InnerBounds", "[", 
+                  RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}], 
+           ")"}], "/.", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"MiddleBounds", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"MiddleBounds", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], 
+               RowBox[{"(", 
+                RowBox[{"1", "-", "t"}], ")"}]}], "+", 
+              RowBox[{
+               RowBox[{"MiddleBounds", "[", 
+                RowBox[{"[", "3", "]"}], "]"}], "t"}]}], ")"}]}], ")"}]}], "/.", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"OuterBounds", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+           RowBox[{"OuterBounds", "[", 
+            RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Green"}], ",", 
+        RowBox[{"Mesh", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+     "}"}], "}"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]}], "Input",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750690923824171*^9, 3.750690925426818*^9}, {
+  3.750690968591851*^9, 3.7506912149153337`*^9}, {3.750691272978971*^9, 
+  3.750691278482147*^9}, {3.750691471156376*^9, 3.750691552673985*^9}, {
+  3.750691694595461*^9, 3.7506917128499317`*^9}, {3.750692338885743*^9, 
+  3.750692385710988*^9}, {3.750692813643342*^9, 3.750692839609606*^9}, {
+  3.750693051721765*^9, 3.750693076233779*^9}, {3.750693144937819*^9, 
+  3.750693147078776*^9}, {3.7506932206661386`*^9, 3.750693222110372*^9}, {
+  3.750693274226461*^9, 3.750693292416666*^9}, {3.7506933324943523`*^9, 
+  3.750693376619748*^9}, {3.750693460560361*^9, 3.750693525919751*^9}, {
+  3.750693587645385*^9, 3.750693611042179*^9}, {3.750694934079442*^9, 
+  3.750694934334362*^9}, {3.7506957962897882`*^9, 3.750695812674519*^9}, {
+  3.762865662312112*^9, 
+  3.7628656657956753`*^9}},ExpressionUUID->"84c3f6be-09ba-4ba9-8285-\
+5e2bec86e5bc"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Compute Integral", "Subsection",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.7506951554968853`*^9, 
+  3.750695188568738*^9}},ExpressionUUID->"96dfca38-e14b-4561-85ef-\
+90ad2aa25b7a"],
+
+Cell["\<\
+The following code will compute a triple integral. If the integrand is 1 \
+using Cartesian coordinates, then you will compute the volume of the region.\
+\>", "Text",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750691561488798*^9, 3.7506916126405897`*^9}, {
+  3.750694228378152*^9, 
+  3.750694248793468*^9}},ExpressionUUID->"dae14909-ccbb-43b0-9282-\
+137c9d414d1a"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"OuterBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", 
+     RowBox[{"-", "2"}], ",", "2"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"MiddleBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"y", ",", "0", ",", "4"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"InnerBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"z", ",", "0", ",", 
+     RowBox[{"x", "^", "2"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Integrand", "=", "1"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"IntegralSolution", " ", "=", 
+   RowBox[{"Integrate", "[", 
+    RowBox[{
+    "Integrand", ",", "OuterBounds", ",", "MiddleBounds", ",", " ", 
+     "InnerBounds"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ApproximateSolution", " ", "=", 
+   RowBox[{"NIntegrate", "[", 
+    RowBox[{
+    "Integrand", ",", "OuterBounds", ",", "MiddleBounds", ",", " ", 
+     "InnerBounds"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Grid", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<OuterBounds\>\"", ",", " ", "\"\<InnerBounds\>\"", ",", 
+       "\"\<Integrand\>\"", ",", " ", "\"\<Integral Solution\>\"", ",", 
+       "\"\<ApproximateSolution\>\""}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "OuterBounds", ",", " ", "InnerBounds", ",", "Integrand", ",", 
+       "IntegralSolution", ",", "ApproximateSolution"}], "}"}]}], "}"}], ",", 
+   
+   RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}]}], "Input",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750691223173471*^9, 3.7506912670403347`*^9}, {
+   3.750691297248672*^9, 3.750691338896779*^9}, {3.7506927320316267`*^9, 
+   3.750692767578857*^9}, 3.750692804850916*^9, {3.75069367125904*^9, 
+   3.750693784638983*^9}, {3.7506938839379053`*^9, 3.750693907853067*^9}, {
+   3.750694929407329*^9, 3.7506949296291933`*^9}, {3.750695339325129*^9, 
+   3.750695340165577*^9}},ExpressionUUID->"c731fa81-5302-4427-8bd6-\
+3bdb9651082e"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Bounds Animation", "Subsection",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.7506951554968853`*^9, 3.750695188568738*^9}, {
+  3.815731955447661*^9, 
+  3.815731961351335*^9}},ExpressionUUID->"6ab84725-d936-4594-9b38-\
+115347a3b4fe"],
+
+Cell["\<\
+This creates a \"Smashing\" animation to show how you can use your bounds to \
+either deconstruct or construct your surface.\
+\>", "Text",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.44602768052264*^9, 
+  3.4460277104757104`*^9}},ExpressionUUID->"d35d5bba-332c-4bb7-bc2f-\
+a2bddb56f496"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"OuterBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", 
+     RowBox[{"-", "3"}], ",", "3"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"MiddleBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"y", ",", "0", ",", 
+     RowBox[{"x", "^", "2"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"InnerBounds", "=", 
+    RowBox[{"{", 
+     RowBox[{"z", ",", "0", ",", 
+      RowBox[{"9", "-", "x", "-", "y"}]}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"rT", "=", 
+  RowBox[{"{", 
+   RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"rr", "=", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"x", ",", "y", ",", "z"}], "}"}], "/.", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"x", "\[Rule]", 
+         RowBox[{"Coordinates", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+        RowBox[{"y", "\[Rule]", 
+         RowBox[{"Coordinates", "[", 
+          RowBox[{"[", "2", "]"}], "]"}]}], ",", 
+        RowBox[{"z", "\[Rule]", 
+         RowBox[{"Coordinates", "[", 
+          RowBox[{"[", "3", "]"}], "]"}]}]}], "}"}]}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"rs", "=", 
+     RowBox[{"rr", "/.", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"OB", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"OB", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], 
+            RowBox[{"(", 
+             RowBox[{"1", "-", "OBSmash"}], ")"}]}], "+", 
+           RowBox[{"OBSmash", " ", "SmashOBTo"}]}], ")"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"MB", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"MB", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], 
+            RowBox[{"(", 
+             RowBox[{"1", "-", "MBSmash"}], ")"}]}], "+", 
+           RowBox[{"MBSmash", " ", "SmashMBTo"}]}], ")"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"IB", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"IB", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], 
+            RowBox[{"(", 
+             RowBox[{"1", "-", "IBSmash"}], ")"}]}], "+", 
+           RowBox[{"IBSmash", " ", "SmashIBTo"}]}], ")"}]}]}], "}"}]}]}], ";",
+     "\[IndentingNewLine]", 
+    RowBox[{"wIB", "=", "IB"}], ";", 
+    RowBox[{"wOB", "=", "OB"}], ";", 
+    RowBox[{"wMB", "=", "MB"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", 
+     RowBox[{"{", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"ParametricPlot3D", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"rr", "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"rr", "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Evaluate", "[", "wOB", "]"}], ",", 
+          RowBox[{"Evaluate", "[", "wMB", "]"}], ",", 
+          RowBox[{"AxesLabel", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"15", ",", "0"}], "}"}]}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", "None"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"ParametricPlot3D", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"rr", "/.", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"wIB", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+               ")"}], "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"rr", "/.", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"wIB", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+               ")"}], "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}], "}"}], ",", 
+          RowBox[{"Evaluate", "[", "wOB", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"MeshShading", "\[Rule]", "None"}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"15", ",", "0"}], "}"}]}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", "None"}]}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"ParametricPlot3D", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"rr", "/.", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"wIB", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+                ")"}], "/.", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"wMB", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                   RowBox[{"(", 
+                    RowBox[{"1", "-", "t"}], ")"}]}], "+", 
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "t"}]}], ")"}]}], ")"}]}],
+              "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"rr", "/.", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"wIB", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+                ")"}], "/.", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"wMB", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                   RowBox[{"(", 
+                    RowBox[{"1", "-", "t"}], ")"}]}], "+", 
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "t"}]}], ")"}]}], ")"}]}],
+              "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", "None"}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"15", ",", "0"}], "}"}]}]}], "]"}], ",", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"ParametricPlot3D", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"rs", "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+            RowBox[{"rs", "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}], "}"}], ",", 
+          RowBox[{"Evaluate", "[", "wOB", "]"}], ",", 
+          RowBox[{"Evaluate", "[", "wMB", "]"}], ",", 
+          RowBox[{"AxesLabel", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"15", ",", "0"}], "}"}]}], ",", 
+          RowBox[{"MeshStyle", "\[Rule]", "Thick"}], ",", 
+          RowBox[{"BoundaryStyle", "\[Rule]", 
+           RowBox[{"Directive", "[", 
+            RowBox[{"Black", ",", "Thick"}], "]"}]}]}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"ParametricPlot3D", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"rs", "/.", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"wIB", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+               ")"}], "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"rs", "/.", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"wIB", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+               ")"}], "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Evaluate", "[", "wOB", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", "Blue"}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"15", ",", "0"}], "}"}]}]}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"ParametricPlot3D", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"rs", "/.", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"wIB", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+                ")"}], "/.", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"wMB", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                   RowBox[{"(", 
+                    RowBox[{"1", "-", "t"}], ")"}]}], "+", 
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "t"}]}], ")"}]}], ")"}]}],
+              "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"rs", "/.", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"wIB", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+                ")"}], "/.", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"wMB", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                   RowBox[{"(", 
+                    RowBox[{"1", "-", "t"}], ")"}]}], "+", 
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "t"}]}], ")"}]}], ")"}]}],
+              "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", "Green"}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}]}]}], "]"}]}], 
+       "\[IndentingNewLine]", "}"}], "}"}], "]"}]}], "\[IndentingNewLine]", 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"Coordinates", ",", "rT"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"OB", ",", "OuterBounds"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"MB", ",", "MiddleBounds"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"IB", ",", "InnerBounds"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"SmashIBTo", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"IBSmash", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"SmashMBTo", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"MBSmash", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"SmashOBTo", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"OBSmash", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"ControlPlacement", "\[Rule]", "Left"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "[", 
+  RowBox[{"OuterBounds", ",", "InnerBounds", ",", "MiddleBounds"}], 
+  "]"}]}], "Input",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.4459928275661793`*^9, 3.445992858460603*^9}, {
+   3.445992893911579*^9, 3.4459931342872224`*^9}, {3.4459931807540383`*^9, 
+   3.4459932297344685`*^9}, {3.445993292494714*^9, 3.4459933407040353`*^9}, {
+   3.4459933761650257`*^9, 3.445993606376053*^9}, {3.4459938122721167`*^9, 
+   3.445993981475419*^9}, {3.4459941299989853`*^9, 3.4459941519305215`*^9}, {
+   3.4459941916075745`*^9, 3.4459941943715487`*^9}, {3.445994321093766*^9, 
+   3.445994357405981*^9}, {3.445994508102672*^9, 3.445994508503248*^9}, {
+   3.44602241369932*^9, 3.4460224350500207`*^9}, {3.446022553109782*^9, 
+   3.446022569964018*^9}, {3.4460229010701246`*^9, 3.4460230119796047`*^9}, {
+   3.446023058436406*^9, 3.4460231833360033`*^9}, {3.446023214550888*^9, 
+   3.446023294035181*^9}, 3.44602341538968*^9, {3.446023500281749*^9, 
+   3.446023514552269*^9}, {3.4460235946975117`*^9, 3.4460236392916355`*^9}, {
+   3.446023877624341*^9, 3.44602389558016*^9}, {3.4460241527900095`*^9, 
+   3.44602416856269*^9}, {3.446024348251069*^9, 3.4460243531280813`*^9}, {
+   3.4460244157781677`*^9, 3.4460244198540287`*^9}, {3.4460247976873264`*^9, 
+   3.4460250098524046`*^9}, {3.4460256468083024`*^9, 
+   3.4460256594765186`*^9}, {3.4460270978648195`*^9, 
+   3.4460271782203646`*^9}, {3.4460272246471233`*^9, 3.446027225328102*^9}, {
+   3.446027655516683*^9, 
+   3.446027669657016*^9}},ExpressionUUID->"494dc6e3-14b2-47c6-a902-\
+9ead225461ff"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Triple Integrals in Cylindrical Coordinates", "Section",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750691638992403*^9, 3.7506916882087803`*^9}, {
+  3.7506930052250834`*^9, 3.750693010041381*^9}, {3.750694028920871*^9, 
+  3.750694033369439*^9}},ExpressionUUID->"598ed134-73e5-444a-972c-\
+f1b574a45ea5"],
+
+Cell[CellGroupData[{
+
+Cell["Plot", "Subsection",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.7506951318969593`*^9, 
+  3.750695149624834*^9}},ExpressionUUID->"bedb9597-af46-4edb-9906-\
+da09be5c77ab"],
+
+Cell["\<\
+The following code will draw a solid region described using triple integrals \
+in Cartesian coordinates.  The code actually draws 6 surfaces (one for each \
+inequality) and then puts them in the same plot. \
+\>", "Text",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750691353264286*^9, 3.7506914614726143`*^9}, {
+  3.750692326196982*^9, 3.750692334741083*^9}, {3.750693024489408*^9, 
+  3.7506930478493013`*^9}, {3.750693194681807*^9, 3.750693214601144*^9}, {
+  3.7506935685537148`*^9, 3.7506935782967567`*^9}, {3.7506939430171947`*^9, 
+  3.750693969193694*^9}},ExpressionUUID->"2c20692a-98cd-465a-989c-\
+46cb02dcb161"],
+
+Cell[BoxData[{
+ RowBox[{"OuterBounds", "=", 
+  RowBox[{"{", 
+   RowBox[{"theta", ",", "0", ",", 
+    RowBox[{"Pi", "/", "2"}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MiddleBounds", "=", 
+  RowBox[{"{", 
+   RowBox[{"r", ",", "1", ",", "2"}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"InnerBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"z", ",", "0", ",", 
+     RowBox[{"9", "-", 
+      RowBox[{"r", "^", "2"}]}]}], "}"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"CoordinateSystem", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"r", " ", 
+      RowBox[{"Cos", "[", "theta", "]"}]}], ",", 
+     RowBox[{"r", " ", 
+      RowBox[{"Sin", "[", "theta", "]"}]}], ",", "z"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Show", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"ParametricPlot3D", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Evaluate", "[", "CoordinateSystem", "]"}], "/.", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"InnerBounds", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+             RowBox[{"InnerBounds", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+          RowBox[{
+           RowBox[{"Evaluate", "[", "CoordinateSystem", "]"}], "/.", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"InnerBounds", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+             RowBox[{"InnerBounds", "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}], "}"}], ",", 
+        RowBox[{"Evaluate", "[", "OuterBounds", "]"}], ",", 
+        RowBox[{"Evaluate", "[", "MiddleBounds", "]"}], ",", 
+        RowBox[{"AxesLabel", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], ",", 
+        RowBox[{"Mesh", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"15", ",", "1"}], "}"}]}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ParametricPlot3D", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Evaluate", "[", "CoordinateSystem", "]"}], "/.", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"InnerBounds", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"InnerBounds", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], 
+                RowBox[{"(", 
+                 RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+               RowBox[{
+                RowBox[{"InnerBounds", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}], 
+          ")"}], "/.", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"MiddleBounds", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+           RowBox[{"MiddleBounds", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+        RowBox[{"Evaluate", "[", "OuterBounds", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Red"}], ",", 
+        RowBox[{"Mesh", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"15", ",", "0"}], "}"}]}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ParametricPlot3D", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Evaluate", "[", "CoordinateSystem", "]"}], "/.", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"InnerBounds", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"InnerBounds", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], 
+                RowBox[{"(", 
+                 RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+               RowBox[{
+                RowBox[{"InnerBounds", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}], 
+          ")"}], "/.", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"MiddleBounds", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+           RowBox[{"MiddleBounds", "[", 
+            RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}], ",", 
+        RowBox[{"Evaluate", "[", "OuterBounds", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Blue"}], ",", 
+        RowBox[{"Mesh", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"15", ",", "0"}], "}"}]}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ParametricPlot3D", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Evaluate", "[", "CoordinateSystem", "]"}], "/.", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"InnerBounds", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"InnerBounds", "[", 
+                  RowBox[{"[", "2", "]"}], "]"}], 
+                 RowBox[{"(", 
+                  RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                RowBox[{
+                 RowBox[{"InnerBounds", "[", 
+                  RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}], 
+           ")"}], "/.", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"MiddleBounds", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"MiddleBounds", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], 
+               RowBox[{"(", 
+                RowBox[{"1", "-", "t"}], ")"}]}], "+", 
+              RowBox[{
+               RowBox[{"MiddleBounds", "[", 
+                RowBox[{"[", "3", "]"}], "]"}], "t"}]}], ")"}]}], ")"}]}], "/.", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"OuterBounds", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+           RowBox[{"OuterBounds", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Green"}], ",", 
+        RowBox[{"Mesh", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}]}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ParametricPlot3D", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Evaluate", "[", "CoordinateSystem", "]"}], "/.", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"InnerBounds", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"InnerBounds", "[", 
+                  RowBox[{"[", "2", "]"}], "]"}], 
+                 RowBox[{"(", 
+                  RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                RowBox[{
+                 RowBox[{"InnerBounds", "[", 
+                  RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}], 
+           ")"}], "/.", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"MiddleBounds", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"MiddleBounds", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], 
+               RowBox[{"(", 
+                RowBox[{"1", "-", "t"}], ")"}]}], "+", 
+              RowBox[{
+               RowBox[{"MiddleBounds", "[", 
+                RowBox[{"[", "3", "]"}], "]"}], "t"}]}], ")"}]}], ")"}]}], "/.", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"OuterBounds", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+           RowBox[{"OuterBounds", "[", 
+            RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Green"}], ",", 
+        RowBox[{"Mesh", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+     "}"}], "}"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]}], "Input",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750690923824171*^9, 3.750690925426818*^9}, {
+   3.750690968591851*^9, 3.7506912149153337`*^9}, {3.750691272978971*^9, 
+   3.750691278482147*^9}, {3.750691471156376*^9, 3.750691552673985*^9}, {
+   3.750691694595461*^9, 3.7506917128499317`*^9}, {3.750692338885743*^9, 
+   3.750692385710988*^9}, {3.750692813643342*^9, 3.750692839609606*^9}, {
+   3.750693051721765*^9, 3.750693076233779*^9}, {3.750693144937819*^9, 
+   3.750693147078776*^9}, {3.7506932206661386`*^9, 3.750693222110372*^9}, {
+   3.750693274226461*^9, 3.750693292416666*^9}, {3.7506933324943523`*^9, 
+   3.750693376619748*^9}, {3.750693460560361*^9, 3.750693525919751*^9}, {
+   3.750693587645385*^9, 3.750693611042179*^9}, {3.750694048302144*^9, 
+   3.750694087357767*^9}, {3.750694922863446*^9, 3.750694923246945*^9}, 
+   3.750695830741316*^9, 3.750695949599971*^9, 
+   3.76286567828662*^9},ExpressionUUID->"4d9741a9-9e6b-4446-b9c9-\
+bd87ebe18e04"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Compute Integral", "Subsection",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.7506951554968853`*^9, 
+  3.750695188568738*^9}},ExpressionUUID->"66efdb85-423c-40df-8957-\
+3560b519fe3f"],
+
+Cell["\<\
+The following code will compute a triple integral. If the integrand is |r| in \
+cylindrical coordinates, then you will compute the volume of the solid.\
+\>", "Text",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750691561488798*^9, 3.7506916126405897`*^9}, {
+  3.7506941051617002`*^9, 3.750694126393939*^9}, {3.7506942650181503`*^9, 
+  3.75069427103363*^9}, {3.750694849705346*^9, 
+  3.75069485320928*^9}},ExpressionUUID->"8b9be5a9-2e24-4118-b571-\
+483f703ba888"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"OuterBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"theta", ",", "0", ",", 
+     RowBox[{"Pi", "/", "2"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"MiddleBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"r", ",", "1", ",", "3"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"InnerBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"z", ",", "0", ",", 
+     RowBox[{"9", "-", 
+      RowBox[{"r", "^", "2"}]}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Integrand", "=", 
+    RowBox[{"Abs", "[", "r", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"IntegralSolution", " ", "=", 
+   RowBox[{"Integrate", "[", 
+    RowBox[{
+    "Integrand", ",", "OuterBounds", ",", "MiddleBounds", ",", " ", 
+     "InnerBounds"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ApproximateSolution", " ", "=", 
+   RowBox[{"NIntegrate", "[", 
+    RowBox[{
+    "Integrand", ",", "OuterBounds", ",", "MiddleBounds", ",", " ", 
+     "InnerBounds"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Grid", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<OuterBounds\>\"", ",", " ", "\"\<InnerBounds\>\"", ",", 
+       "\"\<Integrand\>\"", ",", " ", "\"\<Integral Solution\>\"", ",", 
+       "\"\<ApproximateSolution\>\""}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "OuterBounds", ",", " ", "InnerBounds", ",", "Integrand", ",", 
+       "IntegralSolution", ",", "ApproximateSolution"}], "}"}]}], "}"}], ",", 
+   
+   RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}]}], "Input",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750691223173471*^9, 3.7506912670403347`*^9}, {
+   3.750691297248672*^9, 3.750691338896779*^9}, {3.7506927320316267`*^9, 
+   3.750692767578857*^9}, 3.750692804850916*^9, {3.75069367125904*^9, 
+   3.750693784638983*^9}, {3.7506938839379053`*^9, 3.750693907853067*^9}, {
+   3.750694129758993*^9, 3.7506941713103313`*^9}, {3.7506949179992037`*^9, 
+   3.750694918543666*^9}, {3.750695312524619*^9, 
+   3.750695314201823*^9}},ExpressionUUID->"393e6b40-960b-493c-a03d-\
+8727be4a3d75"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Bounds Animation", "Subsection",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.7506951554968853`*^9, 3.750695188568738*^9}, {
+  3.815731955447661*^9, 
+  3.815731961351335*^9}},ExpressionUUID->"7a5bc89e-3650-4b20-9d40-\
+334bba058b2e"],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", 
+  RowBox[{"r", ",", "Theta", ",", "z"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"OuterBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"z", ",", "0", ",", "2"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"MiddleBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"r", ",", "0", ",", "3"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"InnerBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"Theta", ",", "0", ",", 
+     RowBox[{"2", "Pi"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rT", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"r", " ", 
+      RowBox[{"Cos", "[", "Theta", "]"}]}], ",", 
+     RowBox[{"r", " ", 
+      RowBox[{"Sin", "[", "Theta", "]"}]}], ",", "z"}], "}"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"rr", "=", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"x", ",", "y", ",", "z"}], "}"}], "/.", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"x", "\[Rule]", 
+         RowBox[{"Coordinates", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+        RowBox[{"y", "\[Rule]", 
+         RowBox[{"Coordinates", "[", 
+          RowBox[{"[", "2", "]"}], "]"}]}], ",", 
+        RowBox[{"z", "\[Rule]", 
+         RowBox[{"Coordinates", "[", 
+          RowBox[{"[", "3", "]"}], "]"}]}]}], "}"}]}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"rs", "=", 
+     RowBox[{"rr", "/.", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"OB", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"OB", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], 
+            RowBox[{"(", 
+             RowBox[{"1", "-", "OBSmash"}], ")"}]}], "+", 
+           RowBox[{"OBSmash", " ", "SmashOBTo"}]}], ")"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"MB", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"MB", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], 
+            RowBox[{"(", 
+             RowBox[{"1", "-", "MBSmash"}], ")"}]}], "+", 
+           RowBox[{"MBSmash", " ", "SmashMBTo"}]}], ")"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"IB", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"IB", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], 
+            RowBox[{"(", 
+             RowBox[{"1", "-", "IBSmash"}], ")"}]}], "+", 
+           RowBox[{"IBSmash", " ", "SmashIBTo"}]}], ")"}]}]}], "}"}]}]}], ";",
+     "\[IndentingNewLine]", 
+    RowBox[{"wIB", "=", "IB"}], ";", 
+    RowBox[{"wOB", "=", "OB"}], ";", 
+    RowBox[{"wMB", "=", "MB"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", 
+     RowBox[{"{", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"ParametricPlot3D", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"rr", "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"rr", "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Evaluate", "[", "wOB", "]"}], ",", 
+          RowBox[{"Evaluate", "[", "wMB", "]"}], ",", 
+          RowBox[{"AxesLabel", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"15", ",", "0"}], "}"}]}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", "None"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"ParametricPlot3D", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"rr", "/.", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"wIB", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+               ")"}], "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"rr", "/.", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"wIB", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+               ")"}], "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}], "}"}], ",", 
+          RowBox[{"Evaluate", "[", "wOB", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"MeshShading", "\[Rule]", "None"}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"15", ",", "0"}], "}"}]}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", "None"}]}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"ParametricPlot3D", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"rr", "/.", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"wIB", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+                ")"}], "/.", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"wMB", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                   RowBox[{"(", 
+                    RowBox[{"1", "-", "t"}], ")"}]}], "+", 
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "t"}]}], ")"}]}], ")"}]}],
+              "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"rr", "/.", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"wIB", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+                ")"}], "/.", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"wMB", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                   RowBox[{"(", 
+                    RowBox[{"1", "-", "t"}], ")"}]}], "+", 
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "t"}]}], ")"}]}], ")"}]}],
+              "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", "None"}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"15", ",", "0"}], "}"}]}]}], "]"}], ",", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"ParametricPlot3D", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"rs", "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+            RowBox[{"rs", "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}], "}"}], ",", 
+          RowBox[{"Evaluate", "[", "wOB", "]"}], ",", 
+          RowBox[{"Evaluate", "[", "wMB", "]"}], ",", 
+          RowBox[{"AxesLabel", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"15", ",", "0"}], "}"}]}], ",", 
+          RowBox[{"MeshStyle", "\[Rule]", "Thick"}], ",", 
+          RowBox[{"BoundaryStyle", "\[Rule]", 
+           RowBox[{"Directive", "[", 
+            RowBox[{"Black", ",", "Thick"}], "]"}]}]}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"ParametricPlot3D", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"rs", "/.", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"wIB", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+               ")"}], "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"rs", "/.", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"wIB", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+               ")"}], "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Evaluate", "[", "wOB", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", "Blue"}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"15", ",", "0"}], "}"}]}]}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"ParametricPlot3D", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"rs", "/.", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"wIB", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+                ")"}], "/.", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"wMB", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                   RowBox[{"(", 
+                    RowBox[{"1", "-", "t"}], ")"}]}], "+", 
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "t"}]}], ")"}]}], ")"}]}],
+              "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"rs", "/.", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"wIB", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+                ")"}], "/.", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"wMB", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                   RowBox[{"(", 
+                    RowBox[{"1", "-", "t"}], ")"}]}], "+", 
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "t"}]}], ")"}]}], ")"}]}],
+              "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", "Green"}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}]}]}], "]"}]}], 
+       "\[IndentingNewLine]", "}"}], "}"}], "]"}]}], "\[IndentingNewLine]", 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"Coordinates", ",", "rT"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"OB", ",", "OuterBounds"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"MB", ",", "MiddleBounds"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"IB", ",", "InnerBounds"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"SmashIBTo", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"IBSmash", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"SmashMBTo", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"MBSmash", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"SmashOBTo", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"OBSmash", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"ControlPlacement", "\[Rule]", "Left"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "[", 
+  RowBox[{"OuterBounds", ",", "InnerBounds", ",", "MiddleBounds"}], 
+  "]"}]}], "Input",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.4460272568934913`*^9, 
+  3.4460272580050898`*^9}},ExpressionUUID->"8b1fb5bd-201d-4968-9321-\
+e87e4ba09ac0"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Triple Integrals in Spherical Coordinates", "Section",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750691638992403*^9, 3.7506916882087803`*^9}, {
+  3.7506930052250834`*^9, 3.750693010041381*^9}, {3.7506940355130672`*^9, 
+  3.7506940394172983`*^9}},ExpressionUUID->"052db310-e1b7-4d11-9406-\
+cb75e50eee76"],
+
+Cell[CellGroupData[{
+
+Cell["Plot", "Subsection",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.7506951318969593`*^9, 
+  3.750695149624834*^9}},ExpressionUUID->"2bc4a7a3-e077-4528-963e-\
+fcea192efdea"],
+
+Cell["\<\
+The following code will draw a solid region described using triple integrals \
+in Cartesian coordinates.  The code actually draws 6 surfaces (one for each \
+inequality) and then puts them in the same plot. \
+\>", "Text",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750691353264286*^9, 3.7506914614726143`*^9}, {
+  3.750692326196982*^9, 3.750692334741083*^9}, {3.750693024489408*^9, 
+  3.7506930478493013`*^9}, {3.750693194681807*^9, 3.750693214601144*^9}, {
+  3.7506935685537148`*^9, 3.7506935782967567`*^9}, {3.7506939430171947`*^9, 
+  3.750693969193694*^9}},ExpressionUUID->"8cdddfc0-4f6e-40d4-97f2-\
+7da77ec90656"],
+
+Cell[BoxData[{
+ RowBox[{"OuterBounds", "=", 
+  RowBox[{"{", 
+   RowBox[{"theta", ",", "0", ",", "Pi"}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MiddleBounds", "=", 
+  RowBox[{"{", 
+   RowBox[{"phi", ",", 
+    RowBox[{"Pi", "/", "6"}], ",", 
+    RowBox[{"Pi", "/", "2"}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"InnerBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"rho", ",", "1", ",", "3"}], "}"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"CoordinateSystem", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"rho", " ", 
+      RowBox[{"Sin", "[", "phi", "]"}], 
+      RowBox[{"Cos", "[", "theta", "]"}]}], ",", 
+     RowBox[{"rho", " ", 
+      RowBox[{"Sin", "[", "phi", "]"}], 
+      RowBox[{"Sin", "[", "theta", "]"}]}], ",", 
+     RowBox[{"rho", " ", 
+      RowBox[{"Cos", "[", "phi", "]"}]}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Show", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"ParametricPlot3D", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Evaluate", "[", "CoordinateSystem", "]"}], "/.", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"InnerBounds", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+             RowBox[{"InnerBounds", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+          RowBox[{
+           RowBox[{"Evaluate", "[", "CoordinateSystem", "]"}], "/.", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"InnerBounds", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+             RowBox[{"InnerBounds", "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}], "}"}], ",", 
+        RowBox[{"Evaluate", "[", "OuterBounds", "]"}], ",", 
+        RowBox[{"Evaluate", "[", "MiddleBounds", "]"}], ",", 
+        RowBox[{"AxesLabel", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], ",", 
+        RowBox[{"Mesh", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"15", ",", "1"}], "}"}]}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ParametricPlot3D", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Evaluate", "[", "CoordinateSystem", "]"}], "/.", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"InnerBounds", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"InnerBounds", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], 
+                RowBox[{"(", 
+                 RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+               RowBox[{
+                RowBox[{"InnerBounds", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}], 
+          ")"}], "/.", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"MiddleBounds", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+           RowBox[{"MiddleBounds", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+        RowBox[{"Evaluate", "[", "OuterBounds", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Red"}], ",", 
+        RowBox[{"Mesh", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"15", ",", "0"}], "}"}]}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ParametricPlot3D", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Evaluate", "[", "CoordinateSystem", "]"}], "/.", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"InnerBounds", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"InnerBounds", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], 
+                RowBox[{"(", 
+                 RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+               RowBox[{
+                RowBox[{"InnerBounds", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}], 
+          ")"}], "/.", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"MiddleBounds", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+           RowBox[{"MiddleBounds", "[", 
+            RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}], ",", 
+        RowBox[{"Evaluate", "[", "OuterBounds", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Blue"}], ",", 
+        RowBox[{"Mesh", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"15", ",", "0"}], "}"}]}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ParametricPlot3D", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Evaluate", "[", "CoordinateSystem", "]"}], "/.", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"InnerBounds", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"InnerBounds", "[", 
+                  RowBox[{"[", "2", "]"}], "]"}], 
+                 RowBox[{"(", 
+                  RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                RowBox[{
+                 RowBox[{"InnerBounds", "[", 
+                  RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}], 
+           ")"}], "/.", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"MiddleBounds", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"MiddleBounds", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], 
+               RowBox[{"(", 
+                RowBox[{"1", "-", "t"}], ")"}]}], "+", 
+              RowBox[{
+               RowBox[{"MiddleBounds", "[", 
+                RowBox[{"[", "3", "]"}], "]"}], "t"}]}], ")"}]}], ")"}]}], "/.", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"OuterBounds", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+           RowBox[{"OuterBounds", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Green"}], ",", 
+        RowBox[{"Mesh", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}]}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ParametricPlot3D", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Evaluate", "[", "CoordinateSystem", "]"}], "/.", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"InnerBounds", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"InnerBounds", "[", 
+                  RowBox[{"[", "2", "]"}], "]"}], 
+                 RowBox[{"(", 
+                  RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                RowBox[{
+                 RowBox[{"InnerBounds", "[", 
+                  RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}], 
+           ")"}], "/.", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"MiddleBounds", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"MiddleBounds", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], 
+               RowBox[{"(", 
+                RowBox[{"1", "-", "t"}], ")"}]}], "+", 
+              RowBox[{
+               RowBox[{"MiddleBounds", "[", 
+                RowBox[{"[", "3", "]"}], "]"}], "t"}]}], ")"}]}], ")"}]}], "/.", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"OuterBounds", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+           RowBox[{"OuterBounds", "[", 
+            RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Green"}], ",", 
+        RowBox[{"Mesh", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+     "}"}], "}"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]}], "Input",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750690923824171*^9, 3.750690925426818*^9}, {
+   3.750690968591851*^9, 3.7506912149153337`*^9}, {3.750691272978971*^9, 
+   3.750691278482147*^9}, {3.750691471156376*^9, 3.750691552673985*^9}, {
+   3.750691694595461*^9, 3.7506917128499317`*^9}, {3.750692338885743*^9, 
+   3.750692385710988*^9}, {3.750692813643342*^9, 3.750692839609606*^9}, {
+   3.750693051721765*^9, 3.750693076233779*^9}, {3.750693144937819*^9, 
+   3.750693147078776*^9}, {3.7506932206661386`*^9, 3.750693222110372*^9}, {
+   3.750693274226461*^9, 3.750693292416666*^9}, {3.7506933324943523`*^9, 
+   3.750693376619748*^9}, {3.750693460560361*^9, 3.750693525919751*^9}, {
+   3.750693587645385*^9, 3.750693611042179*^9}, {3.750694285454524*^9, 
+   3.750694361223721*^9}, {3.750694543295896*^9, 3.750694550388178*^9}, {
+   3.750694680086022*^9, 3.750694738253948*^9}, {3.750694896975425*^9, 
+   3.7506949117419233`*^9}, 3.750695839884006*^9, 
+   3.762865685056724*^9},ExpressionUUID->"ef2eca6b-87a2-4025-8cc9-\
+c1d5375de714"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Compute Integral", "Subsection",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.7506951554968853`*^9, 
+  3.750695188568738*^9}},ExpressionUUID->"ca54f798-2afc-4f3d-85fe-\
+14a348e62889"],
+
+Cell["\<\
+The following code will compute a double integral. If the integrand is \
+\[Rho]^2 Sin[\[Phi]], then for spherical coordinates you get the volume of \
+the solid.\
+\>", "Text",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750691561488798*^9, 3.7506916126405897`*^9}, {
+  3.750694801049268*^9, 
+  3.750694840873292*^9}},ExpressionUUID->"92566039-e884-41ff-82e1-\
+9c9c99a429ae"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"OuterBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"theta", ",", "0", ",", "Pi"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"MiddleBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"phi", ",", 
+     RowBox[{"Pi", "/", "6"}], ",", 
+     RowBox[{"Pi", "/", "2"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"InnerBounds", "=", 
+   RowBox[{"{", 
+    RowBox[{"rho", ",", "1", ",", "3"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Integrand", "=", 
+    RowBox[{
+     RowBox[{"rho", "^", "2"}], " ", 
+     RowBox[{"Abs", "[", 
+      RowBox[{"Sin", "[", "phi", "]"}], "]"}]}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"IntegralSolution", " ", "=", 
+   RowBox[{"Integrate", "[", 
+    RowBox[{
+    "Integrand", ",", "OuterBounds", ",", "MiddleBounds", ",", " ", 
+     "InnerBounds"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ApproximateSolution", " ", "=", 
+   RowBox[{"NIntegrate", "[", 
+    RowBox[{
+    "Integrand", ",", "OuterBounds", ",", "MiddleBounds", ",", " ", 
+     "InnerBounds"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Grid", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<OuterBounds\>\"", ",", " ", "\"\<InnerBounds\>\"", ",", 
+        "\"\<Integrand\>\"", ",", " ", "\"\<Integral Solution\>\"", ",", 
+        "\"\<ApproximateSolution\>\""}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+       "OuterBounds", ",", " ", "InnerBounds", ",", "Integrand", ",", 
+        "IntegralSolution", ",", "ApproximateSolution"}], "}"}]}], "}"}], ",", 
+    RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.750691223173471*^9, 3.7506912670403347`*^9}, {
+   3.750691297248672*^9, 3.750691338896779*^9}, {3.7506927320316267`*^9, 
+   3.750692767578857*^9}, 3.750692804850916*^9, {3.75069367125904*^9, 
+   3.750693784638983*^9}, {3.7506938839379053`*^9, 3.750693907853067*^9}, {
+   3.750694380905299*^9, 3.750694424574535*^9}, {3.75069446518673*^9, 
+   3.750694497422662*^9}, {3.750694751266212*^9, 3.7506947750870543`*^9}, {
+   3.75069490406282*^9, 3.750694904558133*^9}, {3.750695043875704*^9, 
+   3.750695047295627*^9}, 
+   3.7506952957736197`*^9},ExpressionUUID->"bc112db1-5543-4b4e-8cd8-\
+1fbcd1633232"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Bounds Animation", "Subsection",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.7506951554968853`*^9, 3.750695188568738*^9}, {
+  3.815731955447661*^9, 
+  3.815731961351335*^9}},ExpressionUUID->"6ecf113e-9579-4c55-b0dc-\
+c2c8ff11eb33"],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", 
+  RowBox[{"rho", ",", "theta", ",", "phi"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"OuterBounds", "=", 
+  RowBox[{"{", 
+   RowBox[{"rho", ",", "1", ",", "3"}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MiddleBounds", "=", 
+  RowBox[{"{", 
+   RowBox[{"phi", ",", 
+    RowBox[{"Pi", "/", "6"}], ",", 
+    RowBox[{"Pi", "/", "2"}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"InnerBounds", "=", 
+  RowBox[{"{", 
+   RowBox[{"theta", ",", "0", ",", "Pi"}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rT", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"rho", " ", 
+      RowBox[{"Cos", "[", "theta", "]"}], 
+      RowBox[{"Sin", "[", "phi", "]"}]}], ",", 
+     RowBox[{"rho", " ", 
+      RowBox[{"Sin", "[", "theta", "]"}], 
+      RowBox[{"Sin", "[", "phi", "]"}]}], ",", 
+     RowBox[{"rho", " ", 
+      RowBox[{"Cos", "[", "phi", "]"}]}]}], "}"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"rr", "=", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"x", ",", "y", ",", "z"}], "}"}], "/.", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"x", "\[Rule]", 
+         RowBox[{"Coordinates", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+        RowBox[{"y", "\[Rule]", 
+         RowBox[{"Coordinates", "[", 
+          RowBox[{"[", "2", "]"}], "]"}]}], ",", 
+        RowBox[{"z", "\[Rule]", 
+         RowBox[{"Coordinates", "[", 
+          RowBox[{"[", "3", "]"}], "]"}]}]}], "}"}]}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"rs", "=", 
+     RowBox[{"rr", "/.", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"OB", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"OB", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], 
+            RowBox[{"(", 
+             RowBox[{"1", "-", "OBSmash"}], ")"}]}], "+", 
+           RowBox[{"OBSmash", " ", "SmashOBTo"}]}], ")"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"MB", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"MB", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], 
+            RowBox[{"(", 
+             RowBox[{"1", "-", "MBSmash"}], ")"}]}], "+", 
+           RowBox[{"MBSmash", " ", "SmashMBTo"}]}], ")"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"IB", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"IB", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], 
+            RowBox[{"(", 
+             RowBox[{"1", "-", "IBSmash"}], ")"}]}], "+", 
+           RowBox[{"IBSmash", " ", "SmashIBTo"}]}], ")"}]}]}], "}"}]}]}], ";",
+     "\[IndentingNewLine]", 
+    RowBox[{"wIB", "=", "IB"}], ";", 
+    RowBox[{"wOB", "=", "OB"}], ";", 
+    RowBox[{"wMB", "=", "MB"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", 
+     RowBox[{"{", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"ParametricPlot3D", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"rr", "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"rr", "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Evaluate", "[", "wOB", "]"}], ",", 
+          RowBox[{"Evaluate", "[", "wMB", "]"}], ",", 
+          RowBox[{"AxesLabel", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"15", ",", "0"}], "}"}]}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", "None"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"ParametricPlot3D", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"rr", "/.", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"wIB", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+               ")"}], "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"rr", "/.", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"wIB", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+               ")"}], "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}], "}"}], ",", 
+          RowBox[{"Evaluate", "[", "wOB", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"MeshShading", "\[Rule]", "None"}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"15", ",", "0"}], "}"}]}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", "None"}]}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"ParametricPlot3D", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"rr", "/.", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"wIB", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+                ")"}], "/.", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"wMB", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                   RowBox[{"(", 
+                    RowBox[{"1", "-", "t"}], ")"}]}], "+", 
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "t"}]}], ")"}]}], ")"}]}],
+              "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"rr", "/.", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"wIB", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+                ")"}], "/.", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"wMB", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                   RowBox[{"(", 
+                    RowBox[{"1", "-", "t"}], ")"}]}], "+", 
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "t"}]}], ")"}]}], ")"}]}],
+              "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", "None"}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"15", ",", "0"}], "}"}]}]}], "]"}], ",", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"ParametricPlot3D", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"rs", "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+            RowBox[{"rs", "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wIB", "[", 
+                RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}], "}"}], ",", 
+          RowBox[{"Evaluate", "[", "wOB", "]"}], ",", 
+          RowBox[{"Evaluate", "[", "wMB", "]"}], ",", 
+          RowBox[{"AxesLabel", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"15", ",", "0"}], "}"}]}], ",", 
+          RowBox[{"MeshStyle", "\[Rule]", "Thick"}], ",", 
+          RowBox[{"BoundaryStyle", "\[Rule]", 
+           RowBox[{"Directive", "[", 
+            RowBox[{"Black", ",", "Thick"}], "]"}]}]}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"ParametricPlot3D", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"rs", "/.", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"wIB", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+               ")"}], "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"rs", "/.", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"wIB", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                   RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+               ")"}], "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wMB", "[", 
+                RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Evaluate", "[", "wOB", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", "Blue"}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"15", ",", "0"}], "}"}]}]}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"ParametricPlot3D", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"rs", "/.", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"wIB", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+                ")"}], "/.", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"wMB", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                   RowBox[{"(", 
+                    RowBox[{"1", "-", "t"}], ")"}]}], "+", 
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "t"}]}], ")"}]}], ")"}]}],
+              "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"rs", "/.", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"wIB", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                    RowBox[{"(", 
+                    RowBox[{"1", "-", "s"}], ")"}]}], "+", 
+                    RowBox[{
+                    RowBox[{"wIB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "s"}]}], ")"}]}], ")"}]}],
+                ")"}], "/.", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"wMB", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], 
+                   RowBox[{"(", 
+                    RowBox[{"1", "-", "t"}], ")"}]}], "+", 
+                  RowBox[{
+                   RowBox[{"wMB", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "t"}]}], ")"}]}], ")"}]}],
+              "/.", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+               RowBox[{"wOB", "[", 
+                RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"s", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", "Green"}], ",", 
+          RowBox[{"Mesh", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}]}]}], "]"}]}], 
+       "\[IndentingNewLine]", "}"}], "}"}], "]"}]}], "\[IndentingNewLine]", 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"Coordinates", ",", "rT"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"OB", ",", "OuterBounds"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"MB", ",", "MiddleBounds"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"IB", ",", "InnerBounds"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"SmashIBTo", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"IBSmash", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"SmashMBTo", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"MBSmash", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"SmashOBTo", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"OBSmash", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"ControlPlacement", "\[Rule]", "Left"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "[", 
+  RowBox[{"OuterBounds", ",", "InnerBounds", ",", "MiddleBounds"}], 
+  "]"}]}], "Input",
+ ShowGroupOpener->True,
+ CellChangeTimes->{{3.4460266223110065`*^9, 3.446026743154771*^9}, {
+  3.4460269117371807`*^9, 3.446026926538464*^9}, {3.4460273142159166`*^9, 
+  3.4460273157881775`*^9}, {3.815732373263877*^9, 3.8157323907135572`*^9}, {
+  3.815732515884358*^9, 
+  3.815732521302038*^9}},ExpressionUUID->"cbae09f7-8395-49cf-9429-\
+31b3d39efad5"]
+}, Closed]]
+}, Closed]]
+}, Open  ]]
+},
+WindowSize->{808, 911},
+WindowMargins->{{Automatic, 122}, {Automatic, 76}},
+FrontEndVersion->"11.2 for Linux x86 (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 185, 3, 69, "Chapter",ExpressionUUID->"934fee6b-8048-4380-8a62-c6dad9c1a004"],
+Cell[768, 27, 353, 7, 58, "Text",ExpressionUUID->"6ee01bdb-ab38-4a85-a021-beee7c58dc56"],
+Cell[CellGroupData[{
+Cell[1146, 38, 224, 4, 68, "Section",ExpressionUUID->"c07cd9f5-f085-4764-9e90-f8279a9307bf"],
+Cell[CellGroupData[{
+Cell[1395, 46, 178, 4, 55, "Subsection",ExpressionUUID->"e16f74cb-f89d-4def-a413-66c2a049a5ea"],
+Cell[1576, 52, 615, 11, 104, "Text",ExpressionUUID->"6500ce00-14a0-4a5f-84cd-a59bf2c09a20"],
+Cell[2194, 65, 1312, 30, 147, "Input",ExpressionUUID->"6e859740-a85a-4b45-8f61-9c42b4786301"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3543, 100, 190, 4, 55, "Subsection",ExpressionUUID->"38399241-d499-42f0-954d-1e353acf056c"],
+Cell[3736, 106, 318, 7, 58, "Text",ExpressionUUID->"70f9a5af-2cb3-4ff8-a431-2a26a6b5a99d"],
+Cell[4057, 115, 1766, 47, 216, "Input",ExpressionUUID->"0cd31711-11fd-4faa-a595-03df26a1f794"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[5860, 167, 239, 5, 39, "Subsection",ExpressionUUID->"c36bae79-7efe-41df-b102-24d073cd2e13"],
+Cell[6102, 174, 514, 10, 104, "Text",ExpressionUUID->"4685eccd-0112-4cfd-a3f1-304d6f29009a"],
+Cell[6619, 186, 6895, 189, 683, "Input",ExpressionUUID->"9d6bd514-7112-44fe-9710-23fd72d4bd54"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13563, 381, 208, 4, 68, "Section",ExpressionUUID->"fa42b6fd-f983-4f8b-bc21-7fb0f38ddce1"],
+Cell[CellGroupData[{
+Cell[13796, 389, 178, 4, 55, "Subsection",ExpressionUUID->"554511a5-9a31-4adb-81b5-b51bdbd10a48"],
+Cell[13977, 395, 323, 7, 35, "Text",ExpressionUUID->"710f7bf6-f101-4b00-b18f-3b4b84bbe023"],
+Cell[14303, 404, 1500, 36, 147, "Input",ExpressionUUID->"f3d623dd-a399-43e5-b554-7faba251c33f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15840, 445, 190, 4, 55, "Subsection",ExpressionUUID->"e670ab7e-7d85-4c6e-b2e1-9d93a083e6cc"],
+Cell[16033, 451, 476, 9, 58, "Text",ExpressionUUID->"972e656c-bd63-413f-a9d2-4ce2dc95dc75"],
+Cell[16512, 462, 1954, 51, 239, "Input",ExpressionUUID->"030b63c6-b769-4ba4-8903-6729a8e8f8f5"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[18503, 518, 239, 5, 39, "Subsection",ExpressionUUID->"c2321da1-274a-44f8-a075-1ef01300402c"],
+Cell[18745, 525, 622, 11, 127, "Text",ExpressionUUID->"92e2e7e6-35e8-4819-9ddc-b268939cd503"],
+Cell[19370, 538, 7506, 200, 729, "Input",ExpressionUUID->"7d0739ae-9fdf-4419-9997-52508a128112"]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[26925, 744, 263, 5, 54, "Section",ExpressionUUID->"1f5231b2-8c89-433a-bdee-ce31f29cef07"],
+Cell[CellGroupData[{
+Cell[27213, 753, 178, 4, 55, "Subsection",ExpressionUUID->"1b5bb44b-6e5c-4767-8854-aacf07ce737c"],
+Cell[27394, 759, 629, 11, 58, "Text",ExpressionUUID->"a5b63c31-5f00-46fb-932e-06c19a1d2692"],
+Cell[28026, 772, 9456, 240, 791, "Input",ExpressionUUID->"84c3f6be-09ba-4ba9-8285-5e2bec86e5bc"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37519, 1017, 190, 4, 55, "Subsection",ExpressionUUID->"96dfca38-e14b-4561-85ef-90ad2aa25b7a"],
+Cell[37712, 1023, 376, 8, 58, "Text",ExpressionUUID->"dae14909-ccbb-43b0-9282-137c9d414d1a"],
+Cell[38091, 1033, 2057, 54, 262, "Input",ExpressionUUID->"c731fa81-5302-4427-8bd6-3bdb9651082e"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[40185, 1092, 239, 5, 39, "Subsection",ExpressionUUID->"6ab84725-d936-4594-9b38-115347a3b4fe"],
+Cell[40427, 1099, 299, 7, 58, "Text",ExpressionUUID->"d35d5bba-332c-4bb7-bc2f-a2bddb56f496"],
+Cell[40729, 1108, 20207, 512, 1113, "Input",ExpressionUUID->"494dc6e3-14b2-47c6-a902-9ead225461ff"]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[60985, 1626, 311, 5, 54, "Section",ExpressionUUID->"598ed134-73e5-444a-972c-f1b574a45ea5"],
+Cell[CellGroupData[{
+Cell[61321, 1635, 178, 4, 55, "Subsection",ExpressionUUID->"bedb9597-af46-4edb-9906-da09be5c77ab"],
+Cell[61502, 1641, 629, 11, 58, "Text",ExpressionUUID->"2c20692a-98cd-465a-989c-46cb02dcb161"],
+Cell[62134, 1654, 9648, 245, 791, "Input",ExpressionUUID->"4d9741a9-9e6b-4446-b9c9-bd87ebe18e04"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[71819, 1904, 190, 4, 55, "Subsection",ExpressionUUID->"66efdb85-423c-40df-8957-3560b519fe3f"],
+Cell[72012, 1910, 473, 9, 58, "Text",ExpressionUUID->"8b9be5a9-2e24-4118-b571-483f703ba888"],
+Cell[72488, 1921, 2178, 57, 262, "Input",ExpressionUUID->"393e6b40-960b-493c-a03d-8727be4a3d75"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[74703, 1983, 239, 5, 39, "Subsection",ExpressionUUID->"7a5bc89e-3650-4b20-9d40-334bba058b2e"],
+Cell[74945, 1990, 19085, 500, 1136, "Input",ExpressionUUID->"8b1fb5bd-201d-4968-9321-e87e4ba09ac0"]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[94079, 2496, 313, 5, 54, "Section",ExpressionUUID->"052db310-e1b7-4d11-9406-cb75e50eee76"],
+Cell[CellGroupData[{
+Cell[94417, 2505, 178, 4, 55, "Subsection",ExpressionUUID->"2bc4a7a3-e077-4528-963e-fcea192efdea"],
+Cell[94598, 2511, 629, 11, 58, "Text",ExpressionUUID->"8cdddfc0-4f6e-40d4-97f2-7da77ec90656"],
+Cell[95230, 2524, 9853, 249, 791, "Input",ExpressionUUID->"ef2eca6b-87a2-4025-8cc9-c1d5375de714"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[105120, 2778, 190, 4, 55, "Subsection",ExpressionUUID->"ca54f798-2afc-4f3d-85fe-14a348e62889"],
+Cell[105313, 2784, 385, 9, 58, "Text",ExpressionUUID->"92566039-e884-41ff-82e1-9c9c99a429ae"],
+Cell[105701, 2795, 2441, 63, 308, "Input",ExpressionUUID->"bc112db1-5543-4b4e-8cd8-1fbcd1633232"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[108179, 2863, 239, 5, 39, "Subsection",ExpressionUUID->"6ecf113e-9579-4c55-b0dc-c2c8ff11eb33"],
+Cell[108421, 2870, 19407, 503, 1136, "Input",ExpressionUUID->"cbae09f7-8395-49cf-9429-31b3d39efad5"]
+}, Closed]]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
