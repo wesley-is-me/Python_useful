@@ -1,0 +1,16 @@
+import sympy as sym
+import numpy as np
+from matplotlib import pyplot as py
+ 
+t = sym.Symbol('t')
+x = sym.Symbol('x')
+y = sym.Symbol('y')
+#t = sym.pi
+x = 2 * sym.cos(t)
+y = 3 * sym.sin(t)
+ 
+z = (9 - (x ** 2) - (y ** 2))
+dr = sym.diff(z)
+print(dr)
+
+
